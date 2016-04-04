@@ -74,7 +74,8 @@ function findNumberCount(sentenceNum) {
   return totalNums ;
 }
 
-var inputString = 'I saw 3 bears, and 7 toads in 50 meters from the tallest tree in the park.';
+// var inputString = 'I saw 3 bears, and 7 toads in 50 meters from the tallest tree in the park.';
+var inputString = 'I saw 35 bears, and 17 toads in 50 meters ,1 meter from the ground from the tallest tree in the Linkin garden parks.';
 var sentenceNumbers = findNumbersInASentence(inputString);
 console.log("The numbers in the sentence are : " + sentenceNumbers);
 console.log("_____________________________________________");
