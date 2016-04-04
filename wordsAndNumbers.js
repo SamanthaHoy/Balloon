@@ -27,19 +27,22 @@ function findNumbersInASentence(inputStr){
 }
 
 function findWordsLessThanThree(inputStr) {
-  var shortWords = [];
   var inputStr = inputStr.replace( /,/g, "" ); // removes all the commas
   var inputStr = inputStr.replace(/\.+$/,""); // remove the trailing .
-
-  console.log(inputStr);
-  // var splitLine = inputStr.split(' ');
-  // console.log("findWordsLessThanThree:" + splitLine);
-
-
-}
+  // console.log(inputStr);
+  var splitLine = inputStr.split(' ');        // splits the line by space
+  console.log("findWordsLessThanThree:" + splitLine);
+  var shortWords = splitLine.filter(function(word){
+    if (isNaN(word)) {
+      return word.length < 3;
+    } // if
+  }) // filter
+  return shortWords;
+} // function
 
 var inputString = 'I saw 3 bears, and 7 toads in 50 meters from the tallest tree in the park.';
 // var sentenceNumbers = findNumbersInASentence(inputString);
 // console.log("The numbers in the sentence are :" + sentenceNumbers);
 
-var shortWords = findWordsLessThanThree(inputString);
+var shortWordsinSentence = findWordsLessThanThree(inputString);
+console.log("The shortWords in the sentence < 3 :" + shortWordsinSentence);
