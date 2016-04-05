@@ -53,7 +53,7 @@ function findNumBiggerThan15(sentenceNumbers){
 function findWordCount (inputStr) {
   var inputStr = inputStr.replace( /,/g, "" ); // removes all the commas
   var inputStr = inputStr.replace(/\.+$/,""); // remove the trailing .
-  console.log(inputStr);
+  // console.log(inputStr);
   var splitLine = inputStr.split(' ');        // splits the line by space
   var wrdCount = 0 ;
   splitLine.forEach(function(word){
