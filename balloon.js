@@ -88,6 +88,19 @@ function addHelium (helium,howManyBalloons) {
   return totalHelium;
 }
 
+function findBalloonsPerPerson(noOfPeople,howManyBalloons){
+  var balloonsPerPerson = [];
+  var totalNoOfBalloons = 0;
+  howManyBalloons.forEach(function(numOfBalloons){
+    totalNoOfBalloons += numOfBalloons;
+  })
+
+  console.log("totalNoOfBalloons:" + totalNoOfBalloons);
+  var spareBalloons = totalNoOfBalloons % noOfPeople ;
+  console.log("Spare balloons :" + spareBalloons);
+  return spareBalloons;
+}
+
 var str1 = '4 sets of red, 3 sets of blue, and 3 sets of yellow.';
 var str2 = 'R4 for red, R5 for blue, and R5.50 for yellow.';
 var qnty = 3;
@@ -104,4 +117,14 @@ var helium = 2;
 var totalHeliumCost = addHelium(helium,howManyBalloons);
 var totalCostWithHelium = howMuchBalloons + totalHeliumCost ;
 console.log("Total cost with helium : " + totalCostWithHelium);
+console.log('______');
+
+var noOfPeople = 25;
+var yayOrnay = "no" ;
+var spares = findBalloonsPerPerson(noOfPeople,howManyBalloons);
+if (spares > 0)
+  { yayOrnay = "yes"};
+
+console.log("Are there enough balloons per person ?" + yayOrnay);
+console.log("The number of spare balloons are :" + spares);
 console.log('______');
