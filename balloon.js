@@ -101,6 +101,56 @@ function findBalloonsPerPerson(noOfPeople,howManyBalloons){
   return spareBalloons;
 }
 
+// How many people won’t have balloons?
+// Which colour has the most balloons, and which one has the least?
+// var str3 = "5 red balloons, 1 blue balloon, and 3 yellow balloons popped";
+function findWhoWontHaveBalloons(inputStr,howManyBalloons) {
+  var inputStr = inputStr.replace( /balloons/g, "" ); // removes all the balloons
+  var inputStr = inputStr.replace( /balloon/g, "" ); // removes all the balloon
+  var inputStr = inputStr.replace( /and/,"");
+  var inputStr = inputStr.replace( /popped/,"");
+  console.log("inputStr:"+ inputStr);
+
+var BalloonList = inputStr.split(','); // split by comma
+console.log(BalloonList);
+console.log('______');
+
+for (var i = 0; i < BalloonList.length ; i++) { // removes the leading and trailing whitespaces
+  BalloonList[i] = BalloonList[i].trim();
+ }
+ console.log(BalloonList);
+ console.log('______');
+
+ var splitElement = [];
+ var balloonNoAndColour = [];
+ BalloonList.forEach(function(balloon) {
+   splitElement = balloon.split(' ');
+   console.log(splitElement);
+   balloonNoAndColour.push({
+     num: (splitElement[0]) ,
+     color :(splitElement[1]) }); // create an object with 2 keys - num and color
+     console.log(balloonNoAndColour);
+   });
+
+   var howManyPopped = 0;
+   for (var i = 0 ; i < balloonNoAndColour.length ; i++) {
+     howManyPopped += Number(balloonNoAndColour[i].num);
+   }
+   console.log("how many popped:" + howManyPopped);
+   var values = [];
+   values.push(howManyPopped);
+
+   var howManyOfPerColor = [];
+   for (var i = 0 ; i < howManyBalloons.length ; i++) {
+     howManyOfPerColor[i] = howManyBalloons[i] - balloonNoAndColour[i].num;
+     console.log("howManyOfPerColor : " + howManyOfPerColor[i]);
+     values.push(howManyOfPerColor[i]);
+   }
+
+   console.log(values);
+   return values ;
+}
+
 var str1 = '4 sets of red, 3 sets of blue, and 3 sets of yellow.';
 var str2 = 'R4 for red, R5 for blue, and R5.50 for yellow.';
 var qnty = 3;
@@ -128,3 +178,13 @@ if (spares > 0)
 console.log("Are there enough balloons per person ?" + yayOrnay);
 console.log("The number of spare balloons are :" + spares);
 console.log('______');
+
+// How many people won’t have balloons?
+// Which colour has the most balloons, and which one has the least?
+
+var str3 = "5 red balloons, 1 blue balloon, and 3 yellow balloons popped";
+var poppedTotal = findWhoWontHaveBalloons(str3,howManyBalloons);
+console.log('______');
+console.log("No of balloons which popped:" + poppedTotal[0]);
+console.log('______');
+console.log("No of ballons remaining - red:" + poppedTotal[1] + " blue:" + poppedTotal[2] + " yellow:" + poppedTotal[3]);
