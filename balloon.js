@@ -77,6 +77,16 @@ function findHowMuchBalloons(howManyBalloons,inputStr) {
     return totalCost;
   }
 
+function addHelium (helium,howManyBalloons) {
+  var heliumExtra = [];
+  var totalHelium = 0;
+  howManyBalloons.forEach(function(balQnty){
+    heliumExtra = helium * balQnty;
+    totalHelium += heliumExtra ;
+    // console.log("Helium for each color:" + heliumExtra + " totalHelium: " + totalHelium);
+  })
+  return totalHelium;
+}
 
 var str1 = '4 sets of red, 3 sets of blue, and 3 sets of yellow.';
 var str2 = 'R4 for red, R5 for blue, and R5.50 for yellow.';
@@ -88,4 +98,10 @@ console.log('______');
 
 var howMuchBalloons = findHowMuchBalloons(howManyBalloons,str2);
 console.log("Total cost for all balloons:" + howMuchBalloons) ;
+console.log('______');
+
+var helium = 2;
+var totalHeliumCost = addHelium(helium,howManyBalloons);
+var totalCostWithHelium = howMuchBalloons + totalHeliumCost ;
+console.log("Total cost with helium : " + totalCostWithHelium);
 console.log('______');
